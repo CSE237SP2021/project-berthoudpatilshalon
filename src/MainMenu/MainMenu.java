@@ -24,6 +24,13 @@ public class MainMenu {
 		if (selection == 1) {
 			displayNewUserMenu();
 			int newSelection = this.getInput(validInputs);
+			
+		} else {
+			displayExistingUserMenu();
+			validInputs.add(3);
+			validInputs.add(4);
+			validInputs.add(5);
+			int newSelection = this.getInput(validInputs);
 		}
 		
 	}
@@ -48,16 +55,25 @@ public class MainMenu {
 	private void displayMainMenu() {
 		System.out.println("Welcome to the Caloric/Activity Tracker: ");
 		System.out.println();
-		System.out.println("1) Press ‘1’ if you are a new user of the program");
-		System.out.println("2) Press ‘2’ if you are a returning user");
+		System.out.println("1. Press ‘1’ if you are a new user of the program");
+		System.out.println("2. Press ‘2’ if you are a returning user");
 		System.out.println();
 	}
 	
 	private void displayNewUserMenu() {
 		System.out.println("Welcome to your new Caloric/Activity Tracker! ");
 		System.out.println();
-		System.out.println("1.Enter your daily caloric intake goal");
-		System.out.println("2.Enter your daily activity level goal");
+		System.out.println("1. Enter your daily caloric intake goal");
+		System.out.println("2. Enter your daily activity level goal");
+		System.out.println();
+	}
+	
+	private void displayExistingUserMenu() {
+		System.out.println("1. Press ‘1’ to enter your caloric intake for the day ");
+		System.out.println("2. Press ‘2’ to enter your activity/workout for the day ");
+		System.out.println("3. Press ‘3’ to check your caloric intake for the past week ");
+		System.out.println("4. Press ‘4’ to monitor your activity over the past week ");
+		System.out.println("5. Press ‘5’ to reset your caloric intake and activity level goals");
 		System.out.println();
 	}
 	
