@@ -20,8 +20,11 @@ public class MainMenu {
 		validInputs.add(2);
 		
 		int selection = this.getInput(validInputs);
-		System.out.println(selection);
 		
+		if (selection == 1) {
+			displayNewUserMenu();
+			int newSelection = this.getInput(validInputs);
+		}
 		
 	}
 	
@@ -47,6 +50,14 @@ public class MainMenu {
 		System.out.println();
 		System.out.println("1) Press ‘1’ if you are a new user of the program");
 		System.out.println("2) Press ‘2’ if you are a returning user");
+		System.out.println();
+	}
+	
+	private void displayNewUserMenu() {
+		System.out.println("Welcome to your new Caloric/Activity Tracker! ");
+		System.out.println();
+		System.out.println("1.Enter your daily caloric intake goal");
+		System.out.println("2.Enter your daily activity level goal");
 		System.out.println();
 	}
 	
