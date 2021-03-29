@@ -9,8 +9,8 @@ import java.util.List;
 
 public class UserData {
 	
-	private List<Integer> allCaloricIntake;
-	private List<Integer> allActivities;
+	public List<Integer> allCaloricIntake;
+	public List<Integer> allActivities;
 	private int caloricGoal;
 	private int activityGoal;
 	
