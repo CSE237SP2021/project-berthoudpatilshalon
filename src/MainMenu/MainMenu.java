@@ -63,10 +63,9 @@ public class MainMenu {
 	}
 	
 	private void displayNewUserMenu() {
-		System.out.println("Welcome to your new Caloric/Activity Tracker! ");
 		System.out.println();
-		System.out.println("1. Enter your weekly caloric intake goal (in calories)");
-		System.out.println("2. Enter your weekly activity level goal (in minutes)");
+		System.out.println("1. Press '1' to enter your weekly caloric intake goal (in calories)");
+		System.out.println("2. Press '2' to enter your weekly activity level goal (in minutes)");
 		System.out.println();
 	}
 	
