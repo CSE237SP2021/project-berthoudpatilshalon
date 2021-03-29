@@ -10,11 +10,11 @@ import java.util.List;
 public class UserData {
 	
 	private List<Integer> allCaloricIntake;
-	private List<String> allActivities;
+	private List<Integer> allActivities;
 	
 	public UserData() {
 		this.allCaloricIntake = new ArrayList<Integer>();
-		this.allActivities = new ArrayList<String>();
+		this.allActivities = new ArrayList<Integer>();
 	}
 	
 	public void persistData() throws Exception {
@@ -28,19 +28,25 @@ public class UserData {
 		
 		String caloricString = allCaloricStrings.get(0);
 		List<String> tempCaloricIntake = new ArrayList<String>(Arrays.asList(caloricString.split(" ")));
+		allCaloricIntake.clear();
 		for (int i = 0; i < tempCaloricIntake.size(); i++) {
 			allCaloricIntake.set(i, Integer.parseInt(tempCaloricIntake.get(i)));
 		}
 		
+		
 		String activityString = allActivityStrings.get(0);
-		allActivities = new ArrayList<String>(Arrays.asList(activityString.split(" ")));
+		List<String> tempActivities = new ArrayList<String>(Arrays.asList(activityString.split(" ")));
+		allActivities.clear();
+		for (int i = 0; i < tempActivities.size(); i++) {
+			allActivities.set(i, Integer.parseInt(tempActivities.get(i)));
+		}
 	}
 	
 	public void addCaloricIntake(int calories) {
 		allCaloricIntake.add(calories);
 	}
 	
-	public void addActivity(String activity) {
+	public void addActivity(int activity) {
 		allActivities.add(activity);
 	}
 	
