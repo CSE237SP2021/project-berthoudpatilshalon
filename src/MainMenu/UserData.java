@@ -34,7 +34,8 @@ public class UserData {
 		List<String> allActivityStrings = Files.readAllLines(Paths.get("activities.txt"));
 		
 		String caloricString = allCaloricStrings.get(0);
-		List<String> tempCaloricIntake = new ArrayList<String>(Arrays.asList(caloricString.split(" ")));
+		caloricString = caloricString.substring(1, caloricString.length() - 1); 
+		List<String> tempCaloricIntake = new ArrayList<String>(Arrays.asList(caloricString.split(", ")));
 		allCaloricIntake.clear();
 		for (int i = 0; i < tempCaloricIntake.size(); i++) {
 			allCaloricIntake.set(i, Integer.parseInt(tempCaloricIntake.get(i)));
@@ -42,7 +43,8 @@ public class UserData {
 		
 		
 		String activityString = allActivityStrings.get(0);
-		List<String> tempActivities = new ArrayList<String>(Arrays.asList(activityString.split(" ")));
+		activityString = activityString.substring(1, activityString.length() - 1);
+		List<String> tempActivities = new ArrayList<String>(Arrays.asList(activityString.split(", ")));
 		allActivities.clear();
 		for (int i = 0; i < tempActivities.size(); i++) {
 			allActivities.set(i, Integer.parseInt(tempActivities.get(i)));
