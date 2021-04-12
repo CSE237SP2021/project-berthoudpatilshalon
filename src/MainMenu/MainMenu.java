@@ -1,6 +1,7 @@
 package MainMenu;
 
 import java.util.ArrayList;
+import MainMenu.UserData;
 import java.util.List;
 import java.util.Scanner;
 
@@ -13,11 +14,16 @@ public class MainMenu {
 	
 	public MainMenu() {
 		
-		
 		keyboardIn = new Scanner(System.in);
+		UserData userData = new UserData();
 		displayMainMenu();
 		
 		List<Integer> validInputs = new ArrayList<Integer>();
+		List<Integer> allIntegers = new ArrayList<Integer>();
+		for (int i = 0; i < 5000; i++) {
+			allIntegers.add(i);
+		}
+		
 		validInputs.add(1);
 		validInputs.add(2);
 		
@@ -26,6 +32,13 @@ public class MainMenu {
 		if (selection == 1) {
 			displayNewUserMenu();
 			int newSelection = this.getInput(validInputs);
+			if (newSelection == 1) {
+				System.out.println("Enter your weekly calorinc intake goal (in calories)"); 
+				userData.setCaloricGoal(this.getInput(allIntegers));
+			} else if (newSelection == 2) {
+				System.out.println("Enter your weekly activity goal (in minutes)"); 
+				userData.setActivityGoal(this.getInput(allIntegers));
+			}
 			
 		} else {
 			displayExistingUserMenu();
