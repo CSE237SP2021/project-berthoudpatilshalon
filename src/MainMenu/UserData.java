@@ -59,17 +59,42 @@ public class UserData {
 	
 	public void addCaloricIntake(int calories) {
 		allCaloricIntake.add(calories);
+		try {
+			this.persistData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
 	}
 	
 	public void addActivity(int activity) {
 		allActivities.add(activity);
+		try {
+			this.persistData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 	
 	public void setCaloricGoal(int calories) {
 		caloricGoal = calories;
+		try {
+			this.persistData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 	
 	public void setActivityGoal(int minutes) {
 		caloricGoal = minutes;
+		try {
+			this.persistData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 	}
 }
