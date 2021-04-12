@@ -82,7 +82,7 @@ class UnitTests {
 		
 		boolean allContentsMatch = true;
 		for (int i = 0; i < testActivityTimeList.size(); i++) {
-			allContentsMatch &= (myUnitTestData.allCaloricIntake.get(i) == testActivityTimeList.get(i));
+			allContentsMatch &= (myUnitTestData.allActivities.get(i) == testActivityTimeList.get(i));
 		}
 		assertTrue(allContentsMatch);
 	}
