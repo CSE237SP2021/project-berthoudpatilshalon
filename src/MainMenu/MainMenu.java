@@ -33,10 +33,12 @@ public class MainMenu {
 			displayNewUserMenu();
 			int newSelection = this.getInput(validInputs);
 			if (newSelection == 1) {
-				System.out.println("Enter your weekly calorinc intake goal (in calories)"); 
+				System.out.println("Enter your weekly calorinc intake goal (in calories)");
+				System.out.println(); 
 				userData.setCaloricGoal(this.getInput(allIntegers));
 			} else if (newSelection == 2) {
 				System.out.println("Enter your weekly activity goal (in minutes)"); 
+				System.out.println();
 				userData.setActivityGoal(this.getInput(allIntegers));
 			}
 			

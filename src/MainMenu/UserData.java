@@ -89,7 +89,7 @@ public class UserData {
 	}
 	
 	public void setActivityGoal(int minutes) {
-		caloricGoal = minutes;
+		activityGoal = minutes;
 		try {
 			this.persistData();
 		} catch (Exception e) {
