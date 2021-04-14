@@ -24,11 +24,7 @@ public class MainMenu {
 			allIntegers.add(i);
 		}
 		
-		validInputs.add(1);
-		validInputs.add(2);
-		
-		int selection = this.getInput(validInputs);
-		
+				
 		if (selection == 1) {
 			displayNewUserMenu();
 			int newSelection = this.getInput(validInputs);
@@ -70,11 +66,26 @@ public class MainMenu {
 	}
 	
 	private void displayMainMenu() {
+		List<Integer> validInputs = new ArrayList<Integer>();
+		
 		System.out.println("Welcome to the Caloric/Activity Tracker: ");
 		System.out.println();
 		System.out.println("1. Press ‘1’ if you are a new user of the program");
 		System.out.println("2. Press ‘2’ if you are a returning user");
 		System.out.println();
+		
+		validInputs.add(1);
+		validInputs.add(2);
+		int selection = this.getInput(validInputs);
+		if (selection == 1) { 
+			displayNewUserMenu();
+			
+		}
+		
+		else { 
+			displayExistingUserMenu(); 
+		}
+
 	}
 	
 	private void displayNewUserMenu() {
