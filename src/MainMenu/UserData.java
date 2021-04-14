@@ -102,4 +102,9 @@ public class UserData {
 			e.printStackTrace();
 		} 
 	}
+	
+	public void clearGoals() {
+		activityGoal = 0; 
+		caloricGoal = 0; 
+	}
 }

@@ -50,7 +50,7 @@ public class MainMenu {
 		
 		validInputs.add(1);
 		validInputs.add(2);
-		int selection = this.getInput(validInputs);
+		int selection = getInput(validInputs);
 		if (selection == 1) { 
 			displayNewUserMenu();
 		}
@@ -108,7 +108,10 @@ public class MainMenu {
 			checkCaloricIntake();
 		} else if (selection == 4) { 
 			checkActivity(); 
+		} else if (selection == 5) { 
+			clearGoals(); 
 		}
+		
 		
 	}
 	
@@ -119,8 +122,8 @@ public class MainMenu {
 		for (int i = 0; i < 500000; i++) {
 			allIntegers.add(i);
 		}
-		this.userData.setCaloricGoal(this.getInput(allIntegers));
-		if (this.userData.activityGoal == 0) {
+		userData.setCaloricGoal(getInput(allIntegers));
+		if (userData.activityGoal == 0) {
 			enterWeeklyActivityGoal();
 		} else {
 			displayExistingUserMenu();
@@ -136,7 +139,7 @@ public class MainMenu {
 		
 		System.out.println("Enter your weekly activity goal (in minutes)"); 
 		System.out.println();
-		userData.setActivityGoal(this.getInput(allIntegers));
+		userData.setActivityGoal(getInput(allIntegers));
 		
 		if (this.userData.activityGoal == 0) {
 			enterWeeklyCaloricIntakeGoal();
@@ -153,7 +156,7 @@ public class MainMenu {
 			allIntegers.add(i);
 		}
 		
-		this.userData.addCaloricIntake(this.getInput(allIntegers));
+		userData.addCaloricIntake(getInput(allIntegers));
 		displayExistingUserMenu();
 	}
 	
@@ -165,17 +168,17 @@ public class MainMenu {
 			allIntegers.add(i);
 		}
 		
-		this.userData.addActivity(this.getInput(allIntegers));
+		userData.addActivity(getInput(allIntegers));
 		displayExistingUserMenu();
 	}
 	
 	private void checkCaloricIntake() {
-		int calLength = this.userData.allCaloricIntake.size();
+		int calLength = userData.allCaloricIntake.size();
 		List<Integer> lastWeek;
 		if (calLength > 7) {
-			lastWeek = this.userData.allCaloricIntake.subList(calLength - 7, calLength);
+			lastWeek = userData.allCaloricIntake.subList(calLength - 7, calLength);
 		} else {
-			lastWeek = this.userData.allCaloricIntake;
+			lastWeek = userData.allCaloricIntake;
 		}
 		int totalCaloriesIntakedThisWeek = 0;
 		for (int i = 0; i < lastWeek.size(); i++) {
@@ -183,10 +186,10 @@ public class MainMenu {
 		}
 		
 		System.out.println("The last seven days of calorie intake " + lastWeek);
-		if (this.userData.caloricGoal > totalCaloriesIntakedThisWeek) {
-			System.out.println("You are currently " + (this.userData.caloricGoal - totalCaloriesIntakedThisWeek) + " below your weekly caloric intake goal!"); 
+		if (userData.caloricGoal > totalCaloriesIntakedThisWeek) {
+			System.out.println("You are currently " + (userData.caloricGoal - totalCaloriesIntakedThisWeek) + " below your weekly caloric intake goal!"); 
 		} else {
-			System.out.println("You are currently " + (totalCaloriesIntakedThisWeek - this.userData.caloricGoal) + " over your weekly caloric intake goal!");
+			System.out.println("You are currently " + (totalCaloriesIntakedThisWeek - userData.caloricGoal) + " over your weekly caloric intake goal!");
 		}
 		System.out.println();
 		
@@ -195,12 +198,12 @@ public class MainMenu {
 	}
 	
 	private void checkActivity() {
-		int activityLength = this.userData.allActivities.size();
+		int activityLength = userData.allActivities.size();
 		List<Integer> lastWeek;
 		if (activityLength > 7) {
-			lastWeek = this.userData.allActivities.subList(activityLength - 7, activityLength);
+			lastWeek = userData.allActivities.subList(activityLength - 7, activityLength);
 		} else {
-			lastWeek = this.userData.allActivities;
+			lastWeek = userData.allActivities;
 		}
 		int totalActivityThisWeek = 0;
 		for (int i = 0; i < lastWeek.size(); i++) {
@@ -209,13 +212,17 @@ public class MainMenu {
 		
 		System.out.println("The last seven days of activity " + lastWeek);
 		if (this.userData.caloricGoal > totalActivityThisWeek) {
-			System.out.println("You are currently " + (this.userData.activityGoal - totalActivityThisWeek) + " below your weekly activity goal!"); 
+			System.out.println("You are currently " + (userData.activityGoal - totalActivityThisWeek) + " below your weekly activity goal!"); 
 		} else {
-			System.out.println("You are currently " + (totalActivityThisWeek - this.userData.activityGoal) + " over your weekly activity goal!");
+			System.out.println("You are currently " + (totalActivityThisWeek - userData.activityGoal) + " over your weekly activity goal!");
 		}
 		System.out.println();
 		
 		displayExistingUserMenu(); 
 	
+	}
+	private void clearGoals() { 
+		userData.clearGoals();
+		displayNewUserMenu(); 
 	}
 } 
