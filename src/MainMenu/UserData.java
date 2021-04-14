@@ -38,7 +38,10 @@ public class UserData {
 		List<String> tempCaloricIntake = new ArrayList<String>(Arrays.asList(caloricString.split(", ")));
 		allCaloricIntake.clear();
 		for (int i = 0; i < tempCaloricIntake.size(); i++) {
-			allCaloricIntake.set(i, Integer.parseInt(tempCaloricIntake.get(i)));
+			if (!tempCaloricIntake.get(i).trim().isEmpty()) {
+				allCaloricIntake.add(Integer.parseInt(tempCaloricIntake.get(i)));
+			}
+			
 		}
 		
 		
@@ -47,7 +50,9 @@ public class UserData {
 		List<String> tempActivities = new ArrayList<String>(Arrays.asList(activityString.split(", ")));
 		allActivities.clear();
 		for (int i = 0; i < tempActivities.size(); i++) {
-			allActivities.set(i, Integer.parseInt(tempActivities.get(i)));
+			if (!tempActivities.get(i).trim().isEmpty()) {
+				allActivities.add(Integer.parseInt(tempActivities.get(i)));
+			}
 		}
 		
 		// load goals
@@ -96,5 +101,10 @@ public class UserData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+	}
+	
+	public void clearGoals() {
+		activityGoal = 0; 
+		caloricGoal = 0; 
 	}
 }

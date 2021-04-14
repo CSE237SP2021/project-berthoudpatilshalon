@@ -8,6 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import MainMenu.UserData;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 class UnitTests {
 
@@ -82,10 +85,177 @@ class UnitTests {
 		
 		boolean allContentsMatch = true;
 		for (int i = 0; i < testActivityTimeList.size(); i++) {
-			allContentsMatch &= (myUnitTestData.allCaloricIntake.get(i) == testActivityTimeList.get(i));
+			allContentsMatch &= (myUnitTestData.allActivities.get(i) == testActivityTimeList.get(i));
 		}
 		assertTrue(allContentsMatch);
 	}
 	
+	@Test
+	void testAddingCaloricGoal()
+	{
+		UserData myUnitTestData = new UserData(); 
+		int testCaloricGoal = 1000;
+		myUnitTestData.setCaloricGoal(testCaloricGoal);
+		
+		String testCalorieGoal = "";
+		
+		File calorieGoalFile = new File("caloric_goal.txt");
+		
+		try {
+			Scanner scan = new Scanner(calorieGoalFile);
+			testCalorieGoal = scan.nextLine();
+			scan.close();
+					
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		boolean goalsMatch = false;
+		
+		if(testCaloricGoal == Integer.parseInt(testCalorieGoal))
+		{
+			goalsMatch = true;
+		}
+		
+		assertTrue(goalsMatch);
+		
+	}
+	
+	
+	@Test
+	void testAddingActivityGoal()
+	{
+		UserData myUnitTestData = new UserData(); 
+		int testActivityGoal = 60;
+		myUnitTestData.setActivityGoal(testActivityGoal);
+		
+		String testActiveTimeGoal = "";
+		
+		File activityGoalFile = new File("activity_goal.txt");
+		
+		try {
+			Scanner scan = new Scanner(activityGoalFile);
+			testActiveTimeGoal = scan.nextLine();
+			scan.close();
+					
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		boolean goalsMatch = false;
+		
+		if(testActivityGoal == Integer.parseInt(testActiveTimeGoal))
+		{
+			goalsMatch = true;
+		}
+		
+		assertTrue(goalsMatch);
+		
+	}
 
+	
+	@Test
+	void testAddingCaloricData()
+	{
+		UserData myUnitTestData = new UserData(); 
+		
+		List<Integer> testCaloricIntakeList = new ArrayList<Integer>(); 
+		List<Integer> testCaloriesFileList = new ArrayList<Integer>(); 
+
+		testCaloricIntakeList.add(3000); 
+		testCaloricIntakeList.add(2750); 
+		testCaloricIntakeList.add(2950); 
+		
+			
+		File caloricIntakeFile = new File("calories.txt");
+		
+		try {
+			Scanner scan = new Scanner(caloricIntakeFile);
+			scan.useDelimiter(", ");
+			while(scan.hasNextLine())
+			{
+				for(int i = 0; i < testCaloricIntakeList.size(); i++)
+				{
+					//need to figure out how to skip [ and ] at beginning/end of file
+					scan.skip("[");
+					scan.skip("]");
+					testCaloriesFileList.add(Integer.parseInt(scan.next()));
+				}
+			}
+			scan.close();
+					
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		boolean allContentsMatch = false;
+		
+		for(int i = 0; i < testCaloricIntakeList.size(); i++)
+		{
+			allContentsMatch &= (myUnitTestData.allCaloricIntake.get(i) == testCaloricIntakeList.get(i));
+
+		}
+	
+		
+		assertTrue(allContentsMatch);
+		
+	}
+	
+	
+	@Test
+	void testAddingActivityData()
+	{
+		UserData myUnitTestData = new UserData(); 
+		
+		List<Integer> testActivityList = new ArrayList<Integer>(); 
+		List<Integer> testActivityDataList = new ArrayList<Integer>(); 
+
+		testActivityList.add(3000); 
+		testActivityList.add(2750); 
+		testActivityList.add(2950); 
+		
+			
+		File activityDataFile = new File("activities.txt");
+		
+		try {
+			Scanner scan = new Scanner(activityDataFile);
+			scan.useDelimiter(", ");
+			while(scan.hasNextLine())
+			{
+				for(int i = 0; i < testActivityList.size(); i++)
+				{
+					//need to figure out how to skip [ and ] at beginning/end of file
+					scan.skip("[");
+					scan.skip("]");
+					testActivityDataList.add(Integer.parseInt(scan.next()));
+				}
+			}
+			scan.close();
+					
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		boolean allContentsMatch = false;
+		
+		for(int i = 0; i < testActivityDataList.size(); i++)
+		{
+			allContentsMatch &= (myUnitTestData.allActivities.get(i) == testActivityList.get(i));
+
+		}
+	
+		
+		assertTrue(allContentsMatch);
+		
+	}
+	
+	
 }
+
+
+	
+
