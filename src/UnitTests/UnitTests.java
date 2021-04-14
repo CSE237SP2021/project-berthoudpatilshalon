@@ -156,6 +156,104 @@ class UnitTests {
 	}
 
 	
+	@Test
+	void testAddingCaloricData()
+	{
+		UserData myUnitTestData = new UserData(); 
+		
+		List<Integer> testCaloricIntakeList = new ArrayList<Integer>(); 
+		List<Integer> testCaloriesFileList = new ArrayList<Integer>(); 
+
+		testCaloricIntakeList.add(3000); 
+		testCaloricIntakeList.add(2750); 
+		testCaloricIntakeList.add(2950); 
+		
+			
+		File caloricIntakeFile = new File("calories.txt");
+		
+		try {
+			Scanner scan = new Scanner(caloricIntakeFile);
+			scan.useDelimiter(", ");
+			while(scan.hasNextLine())
+			{
+				for(int i = 0; i < testCaloricIntakeList.size(); i++)
+				{
+					//need to figure out how to skip [ and ] at beginning/end of file
+					scan.skip("[");
+					scan.skip("]");
+					testCaloriesFileList.add(Integer.parseInt(scan.next()));
+				}
+			}
+			scan.close();
+					
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		boolean allContentsMatch = false;
+		
+		for(int i = 0; i < testCaloricIntakeList.size(); i++)
+		{
+			allContentsMatch &= (myUnitTestData.allCaloricIntake.get(i) == testCaloricIntakeList.get(i));
+
+		}
+	
+		
+		assertTrue(allContentsMatch);
+		
+	}
+	
+	
+	@Test
+	void testAddingActivityData()
+	{
+		UserData myUnitTestData = new UserData(); 
+		
+		List<Integer> testActivityList = new ArrayList<Integer>(); 
+		List<Integer> testActivityDataList = new ArrayList<Integer>(); 
+
+		testActivityList.add(3000); 
+		testActivityList.add(2750); 
+		testActivityList.add(2950); 
+		
+			
+		File activityDataFile = new File("activities.txt");
+		
+		try {
+			Scanner scan = new Scanner(activityDataFile);
+			scan.useDelimiter(", ");
+			while(scan.hasNextLine())
+			{
+				for(int i = 0; i < testActivityList.size(); i++)
+				{
+					//need to figure out how to skip [ and ] at beginning/end of file
+					scan.skip("[");
+					scan.skip("]");
+					testActivityDataList.add(Integer.parseInt(scan.next()));
+				}
+			}
+			scan.close();
+					
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		boolean allContentsMatch = false;
+		
+		for(int i = 0; i < testActivityDataList.size(); i++)
+		{
+			allContentsMatch &= (myUnitTestData.allActivities.get(i) == testActivityList.get(i));
+
+		}
+	
+		
+		assertTrue(allContentsMatch);
+		
+	}
+	
+	
 }
 
 
