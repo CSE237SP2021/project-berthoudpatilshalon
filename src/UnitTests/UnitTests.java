@@ -85,7 +85,7 @@ class UnitTests {
 		
 		boolean allContentsMatch = true;
 		for (int i = 0; i < testActivityTimeList.size(); i++) {
-			allContentsMatch &= (myUnitTestData.allCaloricIntake.get(i) == testActivityTimeList.get(i));
+			allContentsMatch &= (myUnitTestData.allActivities.get(i) == testActivityTimeList.get(i));
 		}
 		assertTrue(allContentsMatch);
 	}
@@ -94,14 +94,8 @@ class UnitTests {
 	void testAddingCaloricGoal()
 	{
 		UserData myUnitTestData = new UserData(); 
-
 		int testCaloricGoal = 1000;
 		myUnitTestData.setCaloricGoal(testCaloricGoal);
-		//List<Integer> testDailyCaloriesList = new ArrayList<Integer>();
-		//testDailyCaloriesList.add(500);
-		//testDailyCaloriesList.add(1000);
-		//testDailyCaloriesList.add(2000);
-
 		
 		String testCalorieGoal = "";
 		
@@ -120,6 +114,39 @@ class UnitTests {
 		boolean goalsMatch = false;
 		
 		if(testCaloricGoal == Integer.parseInt(testCalorieGoal))
+		{
+			goalsMatch = true;
+		}
+		
+		assertTrue(goalsMatch);
+		
+	}
+	
+	
+	@Test
+	void testAddingActivityGoal()
+	{
+		UserData myUnitTestData = new UserData(); 
+		int testActivityGoal = 60;
+		myUnitTestData.setActivityGoal(testActivityGoal);
+		
+		String testActiveTimeGoal = "";
+		
+		File activityGoalFile = new File("activity_goal.txt");
+		
+		try {
+			Scanner scan = new Scanner(activityGoalFile);
+			testActiveTimeGoal = scan.nextLine();
+			scan.close();
+					
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		boolean goalsMatch = false;
+		
+		if(testActivityGoal == Integer.parseInt(testActiveTimeGoal))
 		{
 			goalsMatch = true;
 		}
