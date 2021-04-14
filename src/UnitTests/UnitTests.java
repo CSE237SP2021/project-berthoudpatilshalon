@@ -8,6 +8,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import MainMenu.UserData;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 class UnitTests {
 
@@ -87,5 +90,47 @@ class UnitTests {
 		assertTrue(allContentsMatch);
 	}
 	
+	@Test
+	void testAddingCaloricGoal()
+	{
+		UserData myUnitTestData = new UserData(); 
 
+		int testCaloricGoal = 1000;
+		myUnitTestData.setCaloricGoal(testCaloricGoal);
+		//List<Integer> testDailyCaloriesList = new ArrayList<Integer>();
+		//testDailyCaloriesList.add(500);
+		//testDailyCaloriesList.add(1000);
+		//testDailyCaloriesList.add(2000);
+
+		
+		String testCalorieGoal = "";
+		
+		File calorieGoalFile = new File("caloric_goal.txt");
+		
+		try {
+			Scanner scan = new Scanner(calorieGoalFile);
+			testCalorieGoal = scan.nextLine();
+			scan.close();
+					
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		boolean goalsMatch = false;
+		
+		if(testCaloricGoal == Integer.parseInt(testCalorieGoal))
+		{
+			goalsMatch = true;
+		}
+		
+		assertTrue(goalsMatch);
+		
+	}
+
+	
 }
+
+
+	
+
