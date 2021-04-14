@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class MainMenu {
 	private Scanner keyboardIn;
+	private UserData userData;
 	
 	public static void main(String[] args) {
 		MainMenu myStartingMenu = new MainMenu();
@@ -16,35 +17,8 @@ public class MainMenu {
 		
 		keyboardIn = new Scanner(System.in);
 		UserData userData = new UserData();
+		this.userData = userData; 
 		displayMainMenu();
-		
-		List<Integer> validInputs = new ArrayList<Integer>();
-		List<Integer> allIntegers = new ArrayList<Integer>();
-		for (int i = 0; i < 5000; i++) {
-			allIntegers.add(i);
-		}
-		
-				
-		if (selection == 1) {
-			displayNewUserMenu();
-			int newSelection = this.getInput(validInputs);
-			if (newSelection == 1) {
-				System.out.println("Enter your weekly calorinc intake goal (in calories)");
-				System.out.println(); 
-				userData.setCaloricGoal(this.getInput(allIntegers));
-			} else if (newSelection == 2) {
-				System.out.println("Enter your weekly activity goal (in minutes)"); 
-				System.out.println();
-				userData.setActivityGoal(this.getInput(allIntegers));
-			}
-			
-		} else {
-			displayExistingUserMenu();
-			validInputs.add(3);
-			validInputs.add(4);
-			validInputs.add(5);
-			int newSelection = this.getInput(validInputs);
-		}
 		
 	}
 	
@@ -79,20 +53,29 @@ public class MainMenu {
 		int selection = this.getInput(validInputs);
 		if (selection == 1) { 
 			displayNewUserMenu();
-			
 		}
-		
-		else { 
+		else if (selection ==2) { 
 			displayExistingUserMenu(); 
 		}
 
 	}
 	
 	private void displayNewUserMenu() {
+		List<Integer> validInputs = new ArrayList<Integer>();
+		validInputs.add(1);
+		validInputs.add(2);
 		System.out.println();
 		System.out.println("1. Press '1' to enter your weekly caloric intake goal (in calories)");
 		System.out.println("2. Press '2' to enter your weekly activity level goal (in minutes)");
 		System.out.println();
+		
+		int selection = this.getInput(validInputs);
+		if (selection == 1) { 
+			enterWeeklyCaloricIntakeGoal(); 
+		} else if (selection == 2) { 
+			enterWeeklyActivityGoal(); 
+		}
+
 	}
 	
 	private void displayExistingUserMenu() {
@@ -103,5 +86,40 @@ public class MainMenu {
 		System.out.println("5. Press ‘5’ to reset your caloric intake and activity level goals");
 		System.out.println();
 	}
+	
+	private void enterWeeklyCaloricIntakeGoal() { 
+		System.out.println("Enter your weekly calorinc intake goal (in calories)");
+		System.out.println(); 
+		List<Integer> allIntegers = new ArrayList<Integer>();
+		for (int i = 0; i < 500000; i++) {
+			allIntegers.add(i);
+		}
+		this.userData.setCaloricGoal(this.getInput(allIntegers));
+		if (this.userData.activityGoal == 0) {
+			enterWeeklyActivityGoal();
+		} else {
+			displayExistingUserMenu();
+		}
+	}
+	
+	private void enterWeeklyActivityGoal() {
+		
+		List<Integer> allIntegers = new ArrayList<Integer>();
+		for (int i = 0; i < 500000; i++) {
+			allIntegers.add(i);
+		}
+		
+		System.out.println("Enter your weekly activity goal (in minutes)"); 
+		System.out.println();
+		userData.setActivityGoal(this.getInput(allIntegers));
+		
+		if (this.userData.activityGoal == 0) {
+			enterWeeklyCaloricIntakeGoal();
+		} else {
+			displayExistingUserMenu();
+		}
+	}
+	
+	
 	
 }
