@@ -11,8 +11,8 @@ public class UserData {
 	
 	public List<Integer> allCaloricIntake;
 	public List<Integer> allActivities;
-	private int caloricGoal;
-	private int activityGoal;
+	public int caloricGoal;
+	public int activityGoal;
 	
 	public UserData() {
 		this.allCaloricIntake = new ArrayList<Integer>();
