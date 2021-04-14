@@ -1,9 +1,9 @@
 # cse237-project
 Our project is a program that allows users to enter/track their weekly caloric intake and activity goal. After this, the user can then enter their daily progress and compare that to the goals they have set for themselves. 
 
-For this iteration, we have completed several user stories. The first set of user stories that were completed was creating a MainMenu for our program and then subsequent menus for new and existing users to our program. After this the user stories that were completed were creating a UserData class that would persist and load data for our existing program users. This was the most challenging story at this point. 
+For this iteration, we have completed several user stories. We now can allow users to enter their caloric or activity goal for a week and then enter their daily progress. On top of this, the program lets the user know how they are doing daily in terms of progressing towards that goal. We also updated our functions were calling upon one another as users inputed data. This reduced the lines of code needed as well as clean our code substantially. 
 
-For the next iteration we intend to complete the user stories that allow users to compare their current activity/caloric intake goals to their weekly desired goals. We also need to implement unit tests on our program. We will probably also implement several other user stories based on the functionality of our submission for the first iteration. 
+For our next iteration, we need to work on our unit testing and making sure our tests work smoothly. As of now we don't have any other user stories we want to add but maybe you will have some suggestions for us!  
 
 As of now, there is nothing that we are aware of that doesnt work in our program. 
 
