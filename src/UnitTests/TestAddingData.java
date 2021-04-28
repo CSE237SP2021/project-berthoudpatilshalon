@@ -19,7 +19,7 @@ class TestAddingData {
 	@Test
 	void testAddingCaloricData()
 	{
-UserData myUserData = new UserData(); 
+		UserData myUserData = new UserData(); 
 		
 		List<Integer> testCalorieList = new ArrayList<Integer>();
 		

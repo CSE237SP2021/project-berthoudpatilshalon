@@ -65,7 +65,7 @@ public class UserData {
 	public void addCaloricIntake(int calories) {
 		allCaloricIntake.add(calories);
 		try {
-			this.persistData();
+			persistData();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,7 +76,7 @@ public class UserData {
 	public void addActivity(int activity) {
 		allActivities.add(activity);
 		try {
-			this.persistData();
+			persistData();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,7 +86,7 @@ public class UserData {
 	public void setCaloricGoal(int calories) {
 		caloricGoal = calories;
 		try {
-			this.persistData();
+			persistData();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -96,7 +96,7 @@ public class UserData {
 	public void setActivityGoal(int minutes) {
 		activityGoal = minutes;
 		try {
-			this.persistData();
+			persistData();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -106,5 +106,11 @@ public class UserData {
 	public void clearGoals() {
 		activityGoal = 0; 
 		caloricGoal = 0; 
+		try {
+			persistData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
